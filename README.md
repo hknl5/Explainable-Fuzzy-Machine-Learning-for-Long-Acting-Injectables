@@ -1,10 +1,12 @@
 # Explainable Fuzzy Machine Learning for Long-Acting Injectables
 
+> **Project status: Under construction.** This repository contains preliminary research materials, exploratory analysis, and an initial fuzzification demonstration. The methodology and modeling pipeline are still being developed and may change.
+
 This research project explores whether fuzzy feature representations can improve the prediction and interpretation of drug-release behavior from polymer-based long-acting injectable formulations. It focuses on drug-loaded PLGA microparticles and builds on an explainable machine-learning benchmark for early release, release-profile classification, and complete release-curve prediction.
 
 ## Implemented workflow
 
-The repository currently provides:
+The current work in progress provides:
 
 1. **Dataset preparation:** initial and processed workbooks containing 321 formulations and 4,913 release measurements. The processed data combines formulation-level material properties with time-series release values.
 2. **Exploratory analysis:** `data_visualization.ipynb` examines release curves, sampling duration, data quality, feature distributions, correlations, candidate release drivers, formulation groups, and drug representation.
@@ -24,12 +26,3 @@ The broader crisp, fuzzy-only, and hybrid modeling experiments described in `pro
 ├── proposal.md                              # Research context and proposed methodology
 └── main.pdf                                 # Benchmark research paper
 ```
-
-## Main libraries
-
-- NumPy
-- pandas
-- Matplotlib
-- openpyxl
-
-No pinned environment or dependency file is provided. The visualization notebook reads the included Excel workbooks directly. The fuzzification notebook additionally imports `fuzzypharma.fuzzy`, which is not included in this repository, so it cannot be executed from a clean checkout without that module.
