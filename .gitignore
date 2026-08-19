@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 .venv/
-*.dat.venv_fp/
+*.dat
+.venv_fp/
 .DS_Store
 .claude/
