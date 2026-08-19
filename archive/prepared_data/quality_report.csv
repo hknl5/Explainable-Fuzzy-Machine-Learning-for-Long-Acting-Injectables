@@ -1,0 +1,14 @@
+check,value
+n_rows,4913
+n_profiles,321
+n_drug_groups,88
+missing_cells,0
+non_finite_cells,0
+exact_duplicate_rows,2
+profiles_with_duplicate_times,4
+profiles_unordered_in_workbook,7
+profiles_starting_after_zero,3
+profiles_not_covering_72h,0
+rows_outside_unit_interval,108
+profiles_outside_unit_interval,52
+profiles_with_release_decrease,112

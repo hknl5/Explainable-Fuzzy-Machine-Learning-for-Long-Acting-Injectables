@@ -1,0 +1,6 @@
+fold,train formulations,valid formulations,train drug groups,valid drug groups,train AUC>0.5,valid AUC>0.5,group overlap
+0,256,65,75,13,0.7188,0.8462,0
+1,257,64,70,18,0.7626,0.6719,0
+2,257,64,69,19,0.7276,0.8125,0
+3,257,64,69,19,0.7588,0.6875,0
+4,257,64,69,19,0.7549,0.7031,0
