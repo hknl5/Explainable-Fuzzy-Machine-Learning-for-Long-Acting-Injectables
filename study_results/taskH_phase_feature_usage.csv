@@ -1,0 +1,12 @@
+feature,Early,Middle,Late,total
+Drug Encapsulation Efficiency,41,34,6,81
+Drug Loading Capacity,6,4,18,28
+Drug LogP,4,2,12,18
+Drug MW,8,11,17,36
+Drug TPSA,7,16,16,39
+Formulation Method = W/O/W,8,0,0,8
+Initial Drug-to-Polymer Ratio,6,2,4,12
+LA/GA,0,0,16,16
+Particle Size,12,2,13,27
+Polymer MW,14,36,7,57
+Solubility Enhancer Concentration,9,0,0,9

@@ -1,0 +1,17 @@
+time setting,target,representation,mean ΔRMSE vs crisp,folds better than crisp,consistent across folds
+(a) time-dependent,Release (pointwise),fuzzy (quantile),0.00204,3/5,False
+(a) time-dependent,Release (pointwise),fuzzy (uniform),0.00574,4/5,False
+(a) time-dependent,Release (pointwise),hybrid (quantile),0.00286,2/5,False
+(a) time-dependent,Release (pointwise),hybrid (uniform),0.00383,4/5,False
+(b) time-independent,Release_24h,fuzzy (quantile),0.01553,5/5,True
+(b) time-independent,Release_24h,fuzzy (uniform),0.00121,3/5,False
+(b) time-independent,Release_24h,hybrid (quantile),0.00883,5/5,True
+(b) time-independent,Release_24h,hybrid (uniform),-0.00063,2/5,False
+(b) time-independent,Release_48h,fuzzy (quantile),0.01841,5/5,True
+(b) time-independent,Release_48h,fuzzy (uniform),0.00925,4/5,False
+(b) time-independent,Release_48h,hybrid (quantile),0.01125,3/5,False
+(b) time-independent,Release_48h,hybrid (uniform),0.00186,3/5,False
+(b) time-independent,Release_72h,fuzzy (quantile),0.01108,4/5,False
+(b) time-independent,Release_72h,fuzzy (uniform),-0.00297,2/5,False
+(b) time-independent,Release_72h,hybrid (quantile),0.00555,3/5,False
+(b) time-independent,Release_72h,hybrid (uniform),0.00403,4/5,False
