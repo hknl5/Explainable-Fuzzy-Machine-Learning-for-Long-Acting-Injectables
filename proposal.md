@@ -1,512 +1,375 @@
-Research Project Context
 
-This research investigates the use of fuzzy logic, machine learning, and explainable artificial intelligence for predicting drug-release behavior from polymer-based long-acting injectable formulations.
+# Research Proposal (v2 — Detailed)
 
-1. Research Domain and Problem
+## Explainable Fuzzy Machine Learning for Interpretable Drug-Release Classification in PLGA Long-Acting Injectables
 
-The research focuses on drug-loaded PLGA microparticles used in long-acting injectable drug-delivery systems.
+> This is an updated, detailed version of the original proposal. It preserves
+> the original structure and all safety constraints, and integrates: (a) the
+> decisions the team has now settled, (b) the empirical findings from the
+> completed leakage-controlled study, and (c) a literature review of current
+> PLGA + fuzzy work with sources. Text that is a **new decision** or a
+> **finding** is marked so collaborators can see what changed.
 
-PLGA stands for poly(lactide-co-glycolide), a biodegradable and biocompatible polymer commonly used to encapsulate drugs. After administration, the drug is gradually released from the PLGA microparticles over an extended period.
+---
 
-The drug-release behavior is affected by multiple interacting characteristics related to:
+## 1. Research Domain and Problem
 
-- The drug itself
-- The PLGA polymer
-- The formulation composition
-- The manufacturing method
-- The resulting microparticle properties
-- The in-vitro drug-release conditions
+This research investigates fuzzy logic, machine learning, and explainable AI for
+predicting drug-release behavior from polymer-based long-acting injectable (LAI)
+formulations, specifically drug-loaded PLGA (poly(lactide-co-glycolide))
+microparticles.
 
-Developing an effective long-acting formulation normally requires repeated and time-consuming laboratory experiments. An important challenge is predicting whether a formulation will produce:
+After administration, the drug is released gradually from PLGA microparticles
+over an extended period. Release behavior depends on many interacting
+characteristics of the drug, the polymer, the formulation composition, the
+manufacturing method, the resulting microparticle properties, and the in-vitro
+release conditions. Developing an effective formulation normally requires
+repeated, time-consuming laboratory experiments. Machine learning can learn the
+relationships between formulation characteristics and release outcomes, but those
+relationships are nonlinear, high-dimensional, and partly uncertain — which is
+the motivation for a fuzzy approach.
 
-- Rapid early drug release
-- Sustained or delayed drug release
-- A burst-like release profile
-- A monophasic, biphasic, or triphasic release curve
-- A suitable complete drug-release profile
+**The specific gap this project targets (refined).** Existing ML models for this
+dataset classify release behavior using *crisp* thresholds — a formulation is
+labelled one class on one side of a hard cutoff and the opposite class on the
+other. A value just below the cutoff and a value just above it are treated as
+completely different, even though they are physically almost identical. This
+project replaces that brittle crisp boundary with a *fuzzy* representation that
+assigns graded, overlapping membership (e.g. Low / Medium / High), so that
+near-boundary formulations receive a graded, interpretable description rather
+than an arbitrary hard flip.
 
-Machine-learning models can learn the relationships between formulation characteristics and drug-release outcomes. However, these relationships are complex, multidimensional, nonlinear, and sometimes uncertain.
+---
 
-2. Benchmark Study
+## 2. Benchmark Study
 
 The principal benchmark paper is:
 
-“Predicting early and complete drug release from long-acting injectables using explainable machine learning” by Karla N. Robles and Manar D. Samad, published in the International Journal of Pharmaceutics in 2026.
-
-The benchmark study uses explainable machine learning to predict drug release from the static material and formulation characteristics of drug-loaded PLGA microparticles.
-
-The benchmark study investigates three main prediction tasks:
-
-Task 1: Early Drug-Release Prediction
-
-This is a regression problem.
-
-The objective is to predict the fractional or cumulative drug release at:
-
-- 24 hours
-- 48 hours
-- 72 hours
-
-The output is a numerical release value, usually represented as a fraction between 0 and 1.
-
-For example:
-
-0.35 means that approximately 35% of the drug has been released.
-
-The benchmark models for this task include:
-
-- Linear Regression
-- Random Forest Regressor
-- XGBoost Regressor
-
-Task 2: Drug-Release Profile Classification
-
-This is a binary classification problem.
-
-Each normalized drug-release curve is characterized using the area under the curve, or AUC.
-
-The two classes are:
-
-- AUC ≤ 0.5
-- AUC > 0.5
-
-AUC ≤ 0.5 generally represents delayed, sustained, approximately linear, or more complex low-early-release profiles.
-
-AUC > 0.5 generally represents profiles with greater release during the earlier part of the normalized release period and may include burst-biphasic behavior.
-
-The AUC classification is a mathematical representation of the normalized release curve. It must not automatically be interpreted as a clinical or regulatory diagnosis of burst release.
-
-The benchmark classifiers include:
-
-- Logistic Regression
-- Random Forest
-- XGBoost
-
-Task 3: Complete Drug-Release Curve Prediction
-
-This is a multi-output or sequential regression problem.
-
-The objective is to predict the full standardized drug-release curve using static drug, polymer, formulation, and microparticle characteristics.
-
-The benchmark compares time-dependent and time-independent approaches.
-
-The time-independent models attempt to predict the entire release curve without using time as an input feature and without requiring previous or partial drug-release measurements.
-
-The benchmark models include:
-
-- Time-dependent XGBoost
-- XGBoost without time
-- XGBoost Multi-Regressor
-- Fully Connected Neural Network combined with LSTM
-- Fully Connected Neural Network combined with GRU
-
-3. Dataset
-
-The original dataset was created by Bao et al. and published as:
-
-“A dataset on formulation parameters and characteristics of drug-loaded PLGA microparticles.”
-
-It was compiled from 113 scientific publications and contains:
-
-- 321 in-vitro PLGA microparticle drug-release experiments
-- 4,913 drug-release time points
-- Multiple small-molecule drugs
-- Formulation parameters
-- Drug descriptors
-- Polymer characteristics
-- Microparticle characteristics
-- Complete in-vitro drug-release profiles
-
-The original dataset publication reports 89 drugs. The 2026 benchmark paper reports using 321 release profiles corresponding to 88 drugs. This difference may result from the benchmark study’s filtering, preparation, or drug-identity processing and should be checked when reproducing the experiments.
-
-Each formulation represents one experimental drug-loaded PLGA microparticle formulation associated with a drug-release profile measured at multiple time points.
-
-4. Main Input Features
-
-The main input variables include:
-
-A. Formulation Method
-
-The emulsion method used to prepare the microparticles.
-
-This is a categorical variable and may require one-hot encoding or another appropriate categorical representation.
-
-B. Drug Molecular Weight — Drug MW
-
-The molecular weight of the drug molecule.
-
-C. Drug Topological Polar Surface Area — Drug TPSA
-
-A molecular descriptor associated with the polar surface of the drug and its potential interactions with water and biological environments.
-
-D. Drug LogP
-
-The logarithmic partition coefficient describing the relative lipophilicity or hydrophilicity of the drug.
-
-A higher LogP generally indicates greater affinity for lipophilic environments, while a lower LogP generally indicates greater affinity for aqueous environments.
-
-E. Polymer Molecular Weight — Polymer MW
-
-The molecular weight of the PLGA polymer carrier.
-
-F. LA/GA Ratio
-
-The molar ratio between lactide and glycolide in the PLGA polymer.
-
-G. Initial Drug-to-Polymer Ratio — Initial DPR
-
-The initial weight ratio of the drug to the polymer during formulation preparation.
-
-H. Particle Size
-
-The diameter of the resulting PLGA microparticles.
-
-I. Encapsulation Efficiency — EE
-
-The percentage of the initially added drug successfully encapsulated inside the microparticles.
-
-J. Loading Capacity
-
-The amount of drug relative to the total mass of the final drug-loaded microparticles.
-
-K. Solubility Enhancer Concentration
-
-The concentration of the solubility-enhancing agent used in the in-vitro release medium.
-
-5. Benchmark Data Preparation
-
-The benchmark study performs several preparation steps.
-
-A. Categorical Encoding
-
-The formulation method is treated as a nominal categorical variable and one-hot encoded.
-
-B. Drug-Release Time Normalization
-
-Each release profile can have a different total duration.
-
-The duration of each profile is normalized to a range from 0 to 1 using Min-Max normalization:
-
-normalized_time = (time - minimum_time) /
-                  (maximum_time - minimum_time)
-
-This creates a time-independent standardized representation of release progression.
-
-C. Linear Interpolation
-
-The original release profiles are measured at different and irregular time points.
-
-Linear interpolation is used to:
-
-- Estimate release values between observed points
-- Produce uniformly sampled curves
-- Create fixed-length output sequences
-- Make curves from different studies more comparable
-
-D. Early Release Extraction
-
-Interpolated drug-release values are obtained at:
-
-- 24 hours
-- 48 hours
-- 72 hours
-
-These become the targets for the early-release regression experiments.
-
-E. AUC Calculation
-
-The area under each normalized drug-release curve is calculated.
-
-The AUC is used to create the two release-profile classes:
-
-- AUC ≤ 0.5
-- AUC > 0.5
-
-F. Feature Scaling
-
-Numerical input features are standardized or scaled when required.
-
-To avoid data leakage, preprocessing parameters must be fitted only on the training data and then applied to validation and test data.
-
-G. Drug-Level Data Splitting
-
-All formulations associated with the same drug identity should remain in the same fold.
-
-A drug must not appear in both training and test sets.
-
-The benchmark groups formulations according to drug identity using molecular structure information such as SMILES.
-
-This grouping is important because a random row-level split could leak drug-specific physicochemical information into the test data and produce overly optimistic results.
-
-H. Class-Imbalance Handling
-
-For the binary classification experiment, the benchmark applies random undersampling to the majority class within the training data.
-
-Resampling must not be applied to the validation or test sets.
-
-6. Proposed Fuzzy-ML Methodology
-
-The fuzzy methodology is currently a proposed experimental direction and has not yet been finalized.
-
-The provisional approach is to use fuzzy logic as a feature-representation or feature-engineering method.
-
-The main idea is to represent each numerical formulation characteristic using overlapping linguistic fuzzy sets such as:
-
-- Low
-- Medium
-- High
-
-In conventional crisp classification, a value belongs to only one interval.
-
-For example:
-
-- Values below 70 may be classified as Medium
-- Values equal to or above 70 may be classified as High
-
-This creates a hard cutoff even when two neighboring values are almost identical.
-
-Fuzzy logic avoids this hard boundary by allowing the same value to belong to multiple fuzzy sets with different membership degrees.
-
-For example, an encapsulation efficiency value of 75% might be represented as:
-
-- EE_Low = 0.00
-- EE_Medium = 0.30
-- EE_High = 0.70
-
-This means the value strongly belongs to the High set while retaining partial membership in the Medium set.
-
-The process of converting a numerical value into fuzzy membership degrees is called fuzzification.
-
-7. Membership Functions
-
-Each numerical feature may be represented using membership functions such as:
-
-- Triangular membership functions
-- Trapezoidal membership functions
-- Gaussian membership functions
-
-The membership-function parameters may be determined through:
-
-- Pharmaceutical domain knowledge
-- Statistical properties of the dataset
-- Minimum and maximum values
-- Quantiles or percentiles
-- Clustering
-- Data-driven optimization
-- A hybrid expert-driven and data-driven strategy
-
-The final membership-function design has not yet been selected and must be experimentally evaluated.
-
-Fuzzy membership functions should be fitted or defined without using information from the test set.
-
-If their parameters depend on the data distribution, they should be calculated from the training data only within each cross-validation fold.
-
-8. Crisp and Fuzzy Feature Representation
-
-The original processed numerical features are referred to as crisp features.
-
-For example:
-
-Particle_Size = 45
-Encapsulation_Efficiency = 75
-
-After fuzzification, additional fuzzy features may be generated:
-
-Particle_Size_Low
-Particle_Size_Medium
-Particle_Size_High
-
-EE_Low
-EE_Medium
-EE_High
-
-The current proposed approach is to combine:
-
-1. Original crisp features
-2. Generated fuzzy membership features
-
-This produces a unified feature vector.
-
-Example:
-
-Original features:
-
-- EE = 75
-- Particle_Size = 45
-
-Fuzzy features:
-
-- EE_Low = 0.00
-- EE_Medium = 0.30
-- EE_High = 0.70
-- Particle_Size_Low = 0.60
-- Particle_Size_Medium = 0.40
-- Particle_Size_High = 0.00
-
-Unified feature vector:
-
-- EE
-- EE_Low
-- EE_Medium
-- EE_High
-- Particle_Size
-- Particle_Size_Low
-- Particle_Size_Medium
-- Particle_Size_High
-
-The unified feature vector can then be used to train machine-learning or deep-learning models.
-
-9. Experimental Comparison
-
-The research should include controlled comparisons between models.
-
-A. Baseline Representation
-
-Use only the original crisp features.
-
-B. Fuzzy-Only Representation
-
-Use only fuzzy membership features, if this experiment is considered useful.
-
-C. Hybrid Representation
-
-Use both crisp and fuzzy features.
-
-The comparison should determine whether fuzzy representation provides measurable improvements in:
-
-- Predictive performance
-- Robustness
-- Generalization to unseen drugs
-- Representation of nonlinear relationships
-- Interpretability
-
-All model comparisons should use the same data splits, preprocessing rules, evaluation procedure, and random seeds where possible.
-
-10. Candidate Models
-
-The provisional candidate models include:
-
-- XGBoost for tabular regression and classification
-- GRU-based models for complete release-curve prediction
-
-Other models may be used as baselines or added later.
-
-The exact fuzzy model has not yet been finalized.
-
-The current proposal should not automatically be described as ANFIS, a Mamdani fuzzy inference system, a Sugeno system, or a fuzzy rule-based classifier unless the research team explicitly selects and implements one of these methods.
-
-At the current stage, the approach is best described as:
-
-A hybrid crisp and fuzzy feature-representation framework for explainable machine-learning prediction of PLGA microparticle drug-release behavior.
-
-11. Explainability
-
-Explainable AI will be used to investigate how formulation and fuzzy features influence model predictions.
-
-The benchmark study uses SHAP, or Shapley Additive Explanations.
-
-SHAP may be used to analyze:
-
-- Global feature importance
-- The direction of each feature’s effect
-- Individual formulation predictions
-- Feature influence at 24, 48, and 72 hours
-- Feature influence on release-profile classification
-- Feature importance across different parts of the complete release curve
-- The importance of crisp features compared with fuzzy features
-
-Possible IF–THEN rules may also be explored.
-
-However, IF–THEN rules are not automatically generated merely by adding fuzzy features to XGBoost or GRU.
-
-Rule extraction requires an additional explicit method, such as:
-
-- A fuzzy rule-based inference system
-- A neuro-fuzzy model
-- A surrogate decision tree
-- A dedicated rule-extraction algorithm
-- Rules derived from interpretable membership functions and model explanations
-
-Do not claim that fuzzy IF–THEN rules have been produced unless a specific rule-generation method has been implemented and validated.
-
-12. Evaluation Metrics
-
-For early drug-release regression:
-
-- Root Mean Squared Error — RMSE
-- Mean Absolute Error — MAE, if added
-- Pearson correlation
-- Coefficient of determination — R², if appropriate
-
-For release-profile classification:
-
-- Accuracy
-- Precision
-- Recall
-- F1-score
-- AUROC
-- Confusion matrix
-
-Because the classes are imbalanced, F1-score, recall, and class-specific results should be interpreted alongside accuracy and AUROC.
-
-For complete release-curve prediction:
-
-- RMSE across the full curve
-- Correlation between actual and predicted curves
-- Adjusted R² or another appropriate curve-level measure
-- Performance within AUC ≤ 0.5 and AUC > 0.5 subgroups
-- Visual comparison of representative predicted and actual curves
-
-13. Research Question
-
-The central research question is:
-
-Can fuzzy representation of drug, polymer, formulation, and microparticle characteristics improve the prediction and interpretability of PLGA microparticle drug-release behavior compared with models trained using only the original crisp numerical features?
-
-Possible subquestions include:
-
-- Does fuzzification improve prediction at 24, 48, or 72 hours?
-- Does it improve binary release-profile classification?
-- Does it improve complete release-curve prediction?
-- Which features benefit most from fuzzy representation?
-- Do fuzzy features provide clearer and more scientifically meaningful explanations?
-- Which membership-function design performs best?
-- Does combining crisp and fuzzy features outperform either representation alone?
-- Does the proposed method generalize to completely unseen drugs?
-
-14. Important Research Constraints
-
-When performing any task related to this project:
+> Robles, K. N., & Samad, M. D. (2026). *Predicting early and complete drug
+> release from long-acting injectables using explainable machine learning.*
+> International Journal of Pharmaceutics. (Preprint: arXiv:2601.02265.)
+
+The benchmark uses explainable ML to predict drug release from static material
+and formulation characteristics of drug-loaded PLGA microparticles, across three
+tasks:
+
+- **Task 1 — Early Drug-Release Prediction (regression):** predict fractional
+  cumulative release at 24 h, 48 h, and 72 h. Output is a fraction in [0, 1].
+- **Task 2 — Release-Profile Classification (binary):** each normalized release
+  curve is summarized by its area under the curve (AUC); classes are AUC ≤ 0.5
+  vs AUC > 0.5. This is a mathematical descriptor of the normalized curve and
+  **must not** be read as a clinical burst-release diagnosis.
+- **Task 3 — Complete Release-Curve Prediction:** predict the full standardized
+  curve from static descriptors, comparing time-dependent and time-independent
+  approaches.
+
+---
+
+## 3. Related Work and Literature Positioning (NEW)
+
+A focused review was conducted to place this project relative to current work.
+Three findings matter for scope.
+
+**3.1 The same dataset has recent published models.** At least two 2026 studies
+use the same 321-profile / 89-drug PLGA dataset:
+
+- *Interpretable Two-Stage Machine Learning for Early and Full Drug Release
+  Prediction in PLGA Microspheres* (Pharmaceutics, 19(5):767, May 2026). It
+  first classifies slow-release behaviour (≤ 20% release within 3 days), then
+  feeds the predicted early-release probability into a regression model. XGBoost
+  achieved the lowest MAE (0.126) and highest Pearson r (0.831); SHAP identified
+  drug and polymer molecular weight and polymer concentration as influential.
+- The benchmark itself (arXiv:2601.02265, 2026): early release at 24/48/72 h,
+  release-profile-type classification, and complete-curve prediction, with an
+  explicit data-transformation + explainable-ML pipeline.
+
+*Implication:* prediction and SHAP-based explanation on this dataset are already
+published. The team's completed experiments reproduced comparable numbers
+(r ≈ 0.83), which is consistent with this. Prediction accuracy is therefore
+**not** the novel contribution.
+
+**3.2 Tree → fuzzy-rule conversion is an established method.** The pipeline of
+(a) extracting crisp rules from a decision tree, (b) transforming them into a
+fuzzy model, and (c) optimizing the fuzzy parameters is documented in the fuzzy
+systems literature (e.g. Katsis et al., *Constructing a fuzzy inference
+framework using crisp decision trees*, ScienceDirect; Suarez & Lutsko, *Globally
+Optimal Fuzzy Decision Trees*; *Decision Trees based Fuzzy Rules*, 2016). The
+stated rationale in that literature — that crisp trees have sharp decision
+boundaries that fuzzification "softens" — is exactly this project's motivation.
+
+**3.3 The novel contribution (refined).** No study on this dataset applies a
+*fuzzy* representation to make the classification interpretable and to soften the
+crisp decision boundary. **That is this project's contribution: not better
+prediction, but interpretable, boundary-robust fuzzy classification, compared
+head-to-head against the crisp baseline.**
+
+---
+
+## 4. Dataset
+
+Original dataset: Bao et al., *A dataset on formulation parameters and
+characteristics of drug-loaded PLGA microparticles* — compiled from 113
+publications; 321 in-vitro release experiments; 4,913 release time points;
+formulation, drug, polymer, and microparticle descriptors plus complete
+in-vitro release profiles.
+
+**Established facts from the team's data audit (findings):**
+
+- The 4,913 rows are **measurements**, not independent samples; they correspond
+  to **321 formulations**, each a curve over time. Static descriptors are
+  constant within a formulation.
+- **88 unique drug SMILES vs 89 drug names** — two names share one recorded
+  structure. Grouping on SMILES is the stricter, safer choice.
+- **Zero missing values** (confirmed cell-by-cell) → no imputation.
+- Some Release values exceed 1 (max ≈ 1.08); some curves decrease. These are
+  **not** clipped or forced monotonic in the main pipeline (they may be real
+  measurements; flagged for source review).
+- Release durations span 72 h to 238 days (mean ≈ 30 ± 25 days).
+
+**Resolved open item (decision):** the recorded Time unit is **days**. (Earlier
+this was uncertain; it is now confirmed. This affects any early-release target
+that references 24/48/72 hours — those must be expressed consistently with the
+day-based axis.)
+
+---
+
+## 5. Input Features
+
+Formulation Method (categorical → one-hot); Drug MW; Drug TPSA; Drug LogP;
+Polymer MW; LA/GA ratio; Initial Drug-to-Polymer Ratio (DPR); Particle Size;
+Encapsulation Efficiency (EE); Loading Capacity; Solubility Enhancer
+Concentration.
+
+Formulation Index, Drug name, and Drug SMILES are identifiers / grouping keys —
+**never model inputs.**
+
+**Feature-level findings (from audit + SHAP):**
+
+- Long-tailed features (Polymer MW, Drug MW, Particle Size) saturate under
+  quantile fuzzification (top quartile collapses to one label).
+- `LA/GA` and `Solubility Enhancer Concentration` are near-degenerate (dominated
+  by a single repeated value; ~71% and ~64% respectively). A Low/Med/High split
+  is near-meaningless for these two; a two-level or categorical treatment is
+  more honest. **(Decision to confirm with the team.)**
+- SHAP on the hybrid arm: the model prefers the **crisp** form for long-tailed
+  features and the **fuzzy** form for tie-heavy features (Drug TPSA, Initial
+  DPR) — it routes around whichever encoding loses information.
+
+---
+
+## 6. Proposed Methodology (UPDATED — three explicit layers)
+
+The approach is a **hybrid crisp/fuzzy feature-representation framework with an
+explicit fuzzy-rule layer**, built to make classification interpretable.
+
+**Layer 1 — Fuzzification.** Convert numerical descriptors into triangular
+Low/Medium/High membership values. Knot placement is fitted **on the training
+fold only**, on per-formulation values (so long curves do not dominate the
+quantiles). Tied/degenerate features use a declared fallback or a reduced
+(two-level/categorical) treatment.
+
+**Layer 2 — Predictor.** XGBoost is the primary model (for regression and
+classification); GRU/LSTM remains optional for full-curve prediction. Three
+feature representations are compared under identical folds and seeds:
+crisp-only, fuzzy-only, hybrid.
+
+**Layer 3 — Fuzzy rule generation (the interpretability contribution).** Build
+on the team's decision-tree rule extraction (see §9), then **convert the crisp
+tree thresholds into fuzzy IF–THEN rules** using the membership functions from
+Layer 1 — following the published tree→fuzzy method (§3.2). Output rules read as,
+e.g., "IF Particle Size is Low AND Drug LogP is Low THEN release is High (with
+graded membership)."
+
+**Note on task focus (decision).** Because the team's goal is *interpretable
+classification* — softening the crisp class boundary — the primary task is
+**release classification with fuzzy, graded output**, not point prediction. The
+fuzzy layer operates both on the input descriptors and on the graded class
+assignment (so a near-boundary formulation is, e.g., "fast 0.55 / slow 0.45"
+rather than flipped hard at a cutoff).
+
+---
+
+## 7. Handling of Time (UPDATED — decision + finding)
+
+**Finding (from the completed study):** time dominates every predictor — mean
+|SHAP| ≈ 0.219, roughly six times the next feature. Rules that pair a
+formulation condition with a time condition get credited for an effect that time
+alone explains.
+
+**Decision:** for the classification contribution, time is treated as part of
+the **target definition** (the class is derived from the curve/early-release
+behaviour), not mixed in as an ordinary formulation feature — this keeps the
+fuzzy contribution about *formulation characteristics*, which is what a
+pharmacist needs, and prevents time from swamping the fuzzy signal. Where a
+predictive task does require time (e.g. pointwise release), time is kept on a
+separate axis (log1p) rather than blended with descriptors.
+
+---
+
+## 8. Leakage Control (constraint — non-negotiable)
+
+- Split by **drug (exact SMILES)** with `GroupKFold`; all formulations of one
+  drug stay in one fold. Zero cross-fold drug overlap is asserted.
+- All distribution-dependent steps — scaling, fuzzy knots, feature selection,
+  resampling, rule extraction — are fit on the **training fold only**.
+- No imputation; no Release clipping; no forced monotonicity.
+- Identity/provenance columns are never features.
+- An explicit leakage self-check must PASS before any result is reported.
+
+*(Status: the membership-function notebook implements all of the above; 7/7
+leakage assertions pass.)*
+
+---
+
+## 9. Rule Generation — Status and Requirements (UPDATED)
+
+**What exists.** A collaborator extracted 8 rules from a
+`DecisionTreeRegressor(depth=3)` on [Time, Polymer MW, Particle Size, LA/GA].
+These are the starting point for Layer 3.
+
+**Requirements before these count as findings (constraint):**
+
+1. The tree must be trained **inside each training fold**, not on the full
+   dataset (the collaborator's exploratory tree used all data → exploratory only).
+2. Rules must be **validated on held-out drugs**. In the team's completed
+   experiment, 234 rules → 181 passed a naive test, but after a time-window
+   control only 14/60 formulation rules survived and **none replicated across
+   ≥ 3 folds**. The collaborator's rules are exposed to the same risk and must pass the
+   same tests.
+3. Rules must center on **formulation descriptors**, not time (see §7). Note the
+   depth-3 tree spent most of its splits on Time and never used LA/GA — a sign
+   the crisp tree over-resolves the early curve.
+4. Only after fold-wise validation may any rule be reported to a pharmaceutical
+   audience. **Do not claim validated fuzzy IF–THEN rules before this.**
+
+---
+
+## 10. Candidate Models
+
+- XGBoost — primary, for tabular regression and classification.
+- GRU/LSTM — optional, for complete-curve prediction.
+- Decision tree (shallow) — for rule extraction / surrogate, feeding Layer 3.
+- Rule-extraction methods: RuleFit and/or surrogate tree, then tree→fuzzy
+  conversion.
+
+The final fuzzy architecture is **not** described as ANFIS / Mamdani / Sugeno
+unless one is explicitly selected and implemented. Current description: a hybrid
+crisp/fuzzy feature-representation framework with an explicit tree→fuzzy rule
+layer.
+
+---
+
+## 11. Explainability (UPDATED)
+
+SHAP is used for global importance, effect direction, per-formulation
+explanations, and crisp-vs-fuzzy feature comparison. **The explicit
+rule-generation method is now selected:** decision-tree extraction (RuleFit /
+surrogate) followed by tree→fuzzy conversion, fit per training fold and validated
+on held-out folds before any rule is reported. This satisfies the original
+proposal's requirement that IF–THEN rules not be claimed without a validated,
+explicit method.
+
+---
+
+## 12. Evaluation Metrics
+
+- **Classification (primary):** accuracy, precision, recall, F1, AUROC,
+  confusion matrix — read against the ~2.9:1 class imbalance (≈ 74.5% of
+  formulations are AUC > 0.5), **not** against 50%.
+- **Regression (secondary):** RMSE, MAE, Pearson r, R².
+- **Fuzzy-specific:** boundary-robustness — show that near-cutoff formulations
+  receive graded membership rather than a hard flip (this is the contribution,
+  so it needs its own evaluation, e.g. membership smoothness across the boundary
+  and agreement of near-boundary cases).
+- **Comparison discipline:** crisp vs fuzzy vs hybrid on identical folds/seeds;
+  use paired (per-fold) comparison, since fold difficulty dominates the ± sd and
+  hides real differences.
+
+---
+
+## 13. Research Question
+
+**Central question:** Can a fuzzy representation of drug, polymer, formulation,
+and microparticle characteristics make PLGA release *classification* more
+interpretable and more robust at the decision boundary than a crisp-threshold
+model — without loss of validity?
+
+Subquestions: which features benefit from fuzzy representation; whether fuzzy
+membership gives clearer, boundary-robust class descriptions; which
+membership-function design performs best; whether crisp+fuzzy beats either alone;
+whether the method generalizes to unseen drugs.
+
+---
+
+## 14. Findings So Far (NEW — honest summary)
+
+From the completed leakage-controlled study (`run_study.py`) and the
+membership-function notebook:
+
+- **Fuzzy did not improve prediction, mostly.** In the working regime
+  (time-dependent, R² ≈ 0.47–0.49), all arms are within 0.006 RMSE of crisp
+  (paired win-count 2/5–4/5 = noise). The one consistent gain (time-independent,
+  quantile fuzzification, 5/5 folds at 24 h & 48 h, ≈ 8%) occurs where **every**
+  arm has negative R² — fuzzification made a failing model fail less.
+- **No rule survived validation** (see §9).
+- **The binding constraint is information, not encoding:** ten static descriptors
+  carry limited information about a curve for an unseen drug. This — not the
+  fuzzy encoding — sets the performance ceiling.
+
+These results reframe the project honestly: the contribution is
+**interpretability and boundary behaviour**, evaluated on its own terms, rather
+than a claim of higher accuracy.
+
+---
+
+## 15. Research Constraints (unchanged — still binding)
 
 - Do not invent pharmaceutical interpretations.
-- Clearly distinguish verified findings from hypotheses.
-- Do not treat mathematical AUC classes as confirmed clinical burst-release labels.
-- Prevent data leakage at every preprocessing stage.
-- Keep all formulations of the same drug in the same cross-validation fold.
-- Fit scaling, imputation, fuzzification parameters, feature selection, and resampling only on training data.
-- Preserve the benchmark preprocessing and evaluation strategy when making comparisons.
+- Distinguish verified findings from hypotheses.
+- Do not treat mathematical AUC classes as clinical burst-release labels.
+- Prevent leakage at every stage; keep same-drug formulations in one fold.
+- Fit scaling, fuzzification, selection, resampling on training data only.
+- Preserve benchmark preprocessing/evaluation when comparing.
 - Report negative or insignificant results honestly.
-- Do not assume that fuzzy features will necessarily improve accuracy.
-- Do not claim the final fuzzy architecture has been selected.
-- Do not claim IF–THEN rules are available unless rule extraction has actually been implemented.
-- Explain all technical decisions clearly and provide reproducible code when requested.
+- Do not assume fuzzy features will improve accuracy.
+- Do not claim the final fuzzy architecture is selected beyond what is stated.
+- Do not claim IF–THEN rules until extraction is implemented **and validated**.
+- Explain decisions clearly; provide reproducible code.
 
-15. Current Project Status
+---
 
-The benchmark paper and its dataset have been selected.
+## 16. Current Status and Next Step
 
-A preliminary hybrid fuzzy-ML methodology has been proposed and approved as a promising direction for initial experimentation.
+**Decided:** benchmark & dataset; leakage-controlled grouped split; membership
+functions (train-fold-only, triangular Low/Med/High); tree→fuzzy rule method;
+time treated as target-definition for the classification task; Time unit = days;
+fuzzy-as-representation (not ANFIS).
 
-However, the following decisions are still open:
+**Still open:** membership-function count/shape per feature; treatment of the two
+degenerate features (LA/GA, Solubility Enhancer); exact fuzzy class-boundary
+formulation for the output; final ablation design.
 
-- The exact membership-function type
-- The number of fuzzy sets per feature
-- How membership-function boundaries will be selected
-- Whether all features or only selected features will be fuzzified
-- Whether fuzzy features will replace or complement crisp features
-- Whether a dedicated fuzzy-inference or neuro-fuzzy model will be used
-- Which prediction task will be implemented first
-- How IF–THEN rules will be generated
-- The final model-selection and ablation-study design
+**Immediate next step:** implement the fuzzy classification task (graded output)
+that builds on the collaborator's rules inside the grouped split, convert the tree
+thresholds to fuzzy IF–THEN using the Layer-1 memberships, and compare crisp vs
+fuzzy classification on boundary-robustness and standard metrics — after reading
+the two 2026 same-dataset studies (§3.1) to state the delta precisely.
 
-Any suggested methodology should therefore be presented as a proposal to test rather than as an already finalized research design.
+---
+
+## Sources
+
+1. Robles & Samad (2026), *Predicting early and complete drug release from LAIs
+   using explainable ML*, Int. J. Pharmaceutics — benchmark. arXiv:2601.02265.
+2. *Interpretable Two-Stage ML for Early and Full Drug Release Prediction in
+   PLGA Microspheres*, Pharmaceutics 19(5):767 (May 2026). doi:10.3390/ph19050767
+3. Bao et al., *A dataset on formulation parameters and characteristics of
+   drug-loaded PLGA microparticles* — source dataset.
+4. Katsis et al., *On constructing a fuzzy inference framework using crisp
+   decision trees*, ScienceDirect — tree→fuzzy method.
+5. Suarez & Lutsko, *Globally Optimal Fuzzy Decision Trees for Classification and
+   Regression* — fuzzy decision-tree theory.
+6. *Decision Trees based Fuzzy Rules* (2016), ResearchGate — auto-generating
+   fuzzy rules + membership functions from a tree.
+7. *Machine Learning for Predicting Drug Release Behavior of PLGA Microspheres*,
+   PMC12919544 — additional PLGA ML context.

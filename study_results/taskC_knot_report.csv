@@ -1,0 +1,101 @@
+fold,knot strategy,feature,fuzzifiable,knot source,knots,valid High=1 share,valid Low=1 share
+0,quantile,Drug MW,True,quantile,"[303.789, 371.171, 510.631]",0.0615,0.1077
+0,quantile,Drug TPSA,True,quantile,"[39.2725, 71.415, 102.28]",0.1385,0.0308
+0,quantile,Drug LogP,True,quantile,"[2.1876, 3.5904, 4.694]",0.0154,0.9077
+0,quantile,Polymer MW,True,quantile,"[12.0, 34.0, 46.0]",0.2,0.2462
+0,quantile,LA/GA,True,quantile-unique,"[1.86, 2.33, 3.0]",0.3538,0.6462
+0,quantile,Initial Drug-to-Polymer Ratio,True,quantile,"[0.1, 0.2, 0.25]",0.2462,0.4308
+0,quantile,Particle Size,True,quantile,"[16.0987, 32.4, 62.675]",0.1077,0.2
+0,quantile,Drug Loading Capacity,True,quantile,"[4.2994, 9.4655, 17.3198]",0.1077,0.1077
+0,quantile,Drug Encapsulation Efficiency,True,quantile,"[48.1, 71.7875, 85.82]",0.1846,0.1385
+0,quantile,Solubility Enhancer Concentration,True,quantile-unique,"[0.0875, 0.45, 3.1]",0.0,0.9231
+1,quantile,Drug MW,True,quantile,"[312.453, 392.467, 410.493]",0.4531,0.25
+1,quantile,Drug TPSA,True,quantile,"[41.13, 90.46, 95.83]",0.1719,0.1719
+1,quantile,Drug LogP,True,quantile,"[1.8957, 2.3216, 4.1367]",0.3594,0.0781
+1,quantile,Polymer MW,True,quantile,"[12.0, 31.0, 46.0]",0.2188,0.2812
+1,quantile,LA/GA,True,quantile-unique,"[1.3125, 2.095, 2.8325]",0.3438,0.6406
+1,quantile,Initial Drug-to-Polymer Ratio,True,quantile,"[0.1, 0.1111, 0.25]",0.6094,0.2188
+1,quantile,Particle Size,True,quantile,"[16.73, 35.86, 64.55]",0.0625,0.25
+1,quantile,Drug Loading Capacity,True,quantile,"[4.48, 8.39, 15.92]",0.3281,0.1562
+1,quantile,Drug Encapsulation Efficiency,True,quantile,"[48.2, 69.3, 84.87]",0.3125,0.1406
+1,quantile,Solubility Enhancer Concentration,True,quantile-unique,"[0.0875, 0.45, 3.1]",0.0,0.5625
+2,quantile,Drug MW,True,quantile,"[312.442, 392.467, 415.961]",0.3906,0.2188
+2,quantile,Drug TPSA,True,quantile,"[49.33, 90.46, 94.83]",0.2969,0.3438
+2,quantile,Drug LogP,True,quantile,"[1.8957, 2.6847, 4.1367]",0.5,0.1719
+2,quantile,Polymer MW,True,quantile,"[12.0, 33.0, 46.0]",0.375,0.3281
+2,quantile,LA/GA,True,quantile-unique,"[1.3125, 2.095, 2.8325]",0.3438,0.6406
+2,quantile,Initial Drug-to-Polymer Ratio,True,quantile,"[0.1, 0.2, 0.25]",0.3594,0.4688
+2,quantile,Particle Size,True,quantile,"[18.5296, 35.0, 55.0]",0.4219,0.4531
+2,quantile,Drug Loading Capacity,True,quantile,"[5.8, 9.44, 16.9]",0.2031,0.5
+2,quantile,Drug Encapsulation Efficiency,True,quantile,"[52.8, 74.999, 87.0]",0.0625,0.3594
+2,quantile,Solubility Enhancer Concentration,True,quantile-unique,"[0.045, 0.2, 0.76]",0.1406,0.75
+3,quantile,Drug MW,True,quantile,"[318.756, 392.467, 462.018]",0.2812,0.4375
+3,quantile,Drug TPSA,True,quantile,"[49.33, 88.54, 94.83]",0.3125,0.3594
+3,quantile,Drug LogP,True,quantile,"[1.8957, 2.5837, 4.3354]",0.2656,0.2812
+3,quantile,Polymer MW,True,quantile,"[12.0, 31.0, 46.0]",0.4531,0.2812
+3,quantile,LA/GA,True,quantile-unique,"[1.3125, 2.095, 2.8325]",0.2812,0.7188
+3,quantile,Initial Drug-to-Polymer Ratio,True,quantile,"[0.1, 0.1429, 0.25]",0.5781,0.2031
+3,quantile,Particle Size,True,quantile,"[14.81, 33.93, 53.9606]",0.4844,0.1094
+3,quantile,Drug Loading Capacity,True,quantile,"[4.48, 8.25, 15.02]",0.5312,0.1562
+3,quantile,Drug Encapsulation Efficiency,True,quantile,"[48.2, 69.0, 83.71]",0.4844,0.1406
+3,quantile,Solubility Enhancer Concentration,True,quantile-unique,"[0.0475, 0.3, 1.25]",0.1875,0.6562
+4,quantile,Drug MW,True,quantile,"[314.469, 392.467, 510.631]",0.0469,0.2969
+4,quantile,Drug TPSA,True,quantile,"[53.17, 88.54, 94.83]",0.4062,0.5
+4,quantile,Drug LogP,True,quantile,"[1.8957, 2.9993, 4.3354]",0.1719,0.375
+4,quantile,Polymer MW,True,quantile,"[12.0, 31.0, 46.0]",0.3438,0.2031
+4,quantile,LA/GA,True,quantile-unique,"[1.13, 1.86, 3.0]",0.0625,0.9062
+4,quantile,Initial Drug-to-Polymer Ratio,True,quantile,"[0.1, 0.2, 0.25]",0.3594,0.3594
+4,quantile,Particle Size,True,quantile,"[16.0, 35.0, 61.0]",0.2031,0.1719
+4,quantile,Drug Loading Capacity,True,quantile,"[5.12, 9.53, 17.6]",0.0625,0.375
+4,quantile,Drug Encapsulation Efficiency,True,quantile,"[54.6, 74.0, 85.78]",0.1875,0.4844
+4,quantile,Solubility Enhancer Concentration,True,quantile-unique,"[0.035, 0.45, 5.46]",0.0469,0.6719
+0,uniform,Drug MW,True,uniform,"[130.078, 809.4425, 1488.807]",0.0,0.0
+0,uniform,Drug TPSA,True,uniform,"[6.48, 354.125, 701.77]",0.0,0.0
+0,uniform,Drug LogP,True,uniform,"[-11.5452, -1.2158, 9.1135]",0.0,0.0
+0,uniform,Polymer MW,True,uniform,"[2.3, 108.65, 215.0]",0.0,0.0
+0,uniform,LA/GA,True,uniform,"[1.0, 3.335, 5.67]",0.0,0.6308
+0,uniform,Initial Drug-to-Polymer Ratio,True,uniform,"[0.0005, 0.5083, 1.0162]",0.0154,0.0
+0,uniform,Particle Size,True,uniform,"[1.153, 148.4265, 295.7]",0.0,0.0
+0,uniform,Drug Loading Capacity,True,uniform,"[0.0222, 21.4611, 42.9]",0.0154,0.0
+0,uniform,Drug Encapsulation Efficiency,True,uniform,"[1.31, 50.655, 100.0]",0.0,0.0
+0,uniform,Solubility Enhancer Concentration,True,uniform,"[0.0, 15.0, 30.0]",0.0,0.8923
+1,uniform,Drug MW,True,uniform,"[130.078, 809.4425, 1488.807]",0.0,0.0
+1,uniform,Drug TPSA,True,uniform,"[6.48, 354.125, 701.77]",0.0,0.0
+1,uniform,Drug LogP,True,uniform,"[-11.5452, -1.2158, 9.1135]",0.0,0.0
+1,uniform,Polymer MW,True,uniform,"[2.3, 108.65, 215.0]",0.0,0.0
+1,uniform,LA/GA,True,uniform,"[1.0, 3.335, 5.67]",0.0156,0.6406
+1,uniform,Initial Drug-to-Polymer Ratio,True,uniform,"[0.0005, 0.8597, 1.7189]",0.0,0.0
+1,uniform,Particle Size,True,uniform,"[1.153, 148.4265, 295.7]",0.0,0.0
+1,uniform,Drug Loading Capacity,True,uniform,"[0.0222, 30.9611, 61.9]",0.0,0.0
+1,uniform,Drug Encapsulation Efficiency,True,uniform,"[1.31, 50.655, 100.0]",0.0,0.0
+1,uniform,Solubility Enhancer Concentration,True,uniform,"[0.0, 15.0, 30.0]",0.0,0.375
+2,uniform,Drug MW,True,uniform,"[130.078, 809.4425, 1488.807]",0.0,0.0
+2,uniform,Drug TPSA,True,uniform,"[17.82, 359.795, 701.77]",0.0,0.0625
+2,uniform,Drug LogP,True,uniform,"[-11.5452, -1.2158, 9.1135]",0.0,0.0
+2,uniform,Polymer MW,True,uniform,"[2.3, 108.65, 215.0]",0.0,0.0
+2,uniform,LA/GA,True,uniform,"[1.0, 3.335, 5.67]",0.0,0.6406
+2,uniform,Initial Drug-to-Polymer Ratio,True,uniform,"[0.005, 0.8619, 1.7189]",0.0,0.0781
+2,uniform,Particle Size,True,uniform,"[1.153, 148.4265, 295.7]",0.0,0.0
+2,uniform,Drug Loading Capacity,True,uniform,"[0.0222, 30.9611, 61.9]",0.0,0.0
+2,uniform,Drug Encapsulation Efficiency,True,uniform,"[1.31, 50.655, 100.0]",0.0,0.0
+2,uniform,Solubility Enhancer Concentration,True,uniform,"[0.0, 15.0, 30.0]",0.0,0.7031
+3,uniform,Drug MW,True,uniform,"[194.154, 821.7125, 1449.271]",0.0156,0.1094
+3,uniform,Drug TPSA,True,uniform,"[6.48, 268.485, 530.49]",0.1094,0.0
+3,uniform,Drug LogP,True,uniform,"[-2.6867, 2.0878, 6.8623]",0.0469,0.1094
+3,uniform,Polymer MW,True,uniform,"[5.0, 110.0, 215.0]",0.0,0.0312
+3,uniform,LA/GA,True,uniform,"[1.0, 3.335, 5.67]",0.0,0.7188
+3,uniform,Initial Drug-to-Polymer Ratio,True,uniform,"[0.0005, 0.8597, 1.7189]",0.0,0.0
+3,uniform,Particle Size,True,uniform,"[1.153, 148.4265, 295.7]",0.0,0.0
+3,uniform,Drug Loading Capacity,True,uniform,"[0.0222, 30.9611, 61.9]",0.0,0.0
+3,uniform,Drug Encapsulation Efficiency,True,uniform,"[1.31, 50.405, 99.5]",0.0156,0.0
+3,uniform,Solubility Enhancer Concentration,True,uniform,"[0.0, 10.0, 20.0]",0.1875,0.5312
+4,uniform,Drug MW,True,uniform,"[130.078, 809.4425, 1488.807]",0.0,0.0
+4,uniform,Drug TPSA,True,uniform,"[6.48, 354.125, 701.77]",0.0,0.0
+4,uniform,Drug LogP,True,uniform,"[-11.5452, -1.2158, 9.1135]",0.0,0.0
+4,uniform,Polymer MW,True,uniform,"[2.3, 55.15, 108.0]",0.0469,0.0
+4,uniform,LA/GA,True,uniform,"[1.0, 3.335, 5.67]",0.0469,0.9062
+4,uniform,Initial Drug-to-Polymer Ratio,True,uniform,"[0.0005, 0.8597, 1.7189]",0.0,0.0
+4,uniform,Particle Size,True,uniform,"[1.35, 145.025, 288.7]",0.0156,0.0312
+4,uniform,Drug Loading Capacity,True,uniform,"[0.0279, 30.9639, 61.9]",0.0,0.0156
+4,uniform,Drug Encapsulation Efficiency,True,uniform,"[4.1, 52.05, 100.0]",0.0,0.0312
+4,uniform,Solubility Enhancer Concentration,True,uniform,"[0.0, 15.0, 30.0]",0.0,0.6719

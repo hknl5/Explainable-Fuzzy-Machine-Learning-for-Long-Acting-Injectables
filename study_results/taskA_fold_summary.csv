@@ -1,0 +1,6 @@
+fold,valid formulations,valid drugs,train formulations,train drugs,valid AUC>0.5 rate
+0,65,13,256,75,0.8615
+1,64,18,257,70,0.6094
+2,64,19,257,69,0.875
+3,64,19,257,69,0.7031
+4,64,19,257,69,0.6719
