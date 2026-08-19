@@ -1,0 +1,4 @@
+phase,n measurements,share of measurements,n formulations,n drugs,mean release,sd release,time range (d),provenance
+Early,1331,0.2711,321,88,0.212,0.229,0.00-3.00,"0-3 d. Boundary supported by the published <=20%-within-3-days early release criterion for PLGA microspheres (Pharmaceutics 19(5):767, 2026)."
+Middle,1886,0.3842,320,88,0.5499,0.2857,3.00-14.00,3-14 d. Upper boundary is DATA-DERIVED (66th percentile of measured times; gives three comparably sized phases). NOT a pharmaceutical threshold -- REQUIRES SUPERVISOR / EXPERT SELECTION.
+Late,1692,0.3447,250,72,0.7462,0.229,14.00-237.73,>14 d. Defined as the remainder. Inherits the same unvalidated 14-day boundary -- REQUIRES SUPERVISOR / EXPERT SELECTION.

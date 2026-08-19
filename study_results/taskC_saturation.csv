@@ -1,0 +1,11 @@
+feature,quantile,uniform
+Initial Drug-to-Polymer Ratio,0.43,0.003
+Polymer MW,0.318,0.009
+LA/GA,0.277,0.012
+Drug TPSA,0.265,0.022
+Drug LogP,0.262,0.009
+Particle Size,0.256,0.003
+Drug Loading Capacity,0.247,0.003
+Drug MW,0.247,0.003
+Drug Encapsulation Efficiency,0.246,0.003
+Solubility Enhancer Concentration,0.075,0.038

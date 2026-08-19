@@ -1,0 +1,36 @@
+feature,mean |SHAP|,sd across folds,block
+Log1p Time,0.21929732,0.015694132,time
+Polymer MW is Low,0.035613466,0.007930853,fuzzy membership
+Drug Encapsulation Efficiency is High,0.031950206,0.010350858,fuzzy membership
+Drug MW is Low,0.024732333,0.0059544584,fuzzy membership
+Particle Size is Low,0.019301936,0.006954428,fuzzy membership
+Initial Drug-to-Polymer Ratio is Medium,0.016285187,0.0030528493,fuzzy membership
+Initial Drug-to-Polymer Ratio is Low,0.015887175,0.0042162207,fuzzy membership
+Drug MW is Medium,0.014026985,0.0073214127,fuzzy membership
+Drug Loading Capacity is Medium,0.013780549,0.004626291,fuzzy membership
+Polymer MW is Medium,0.011930535,0.0046872585,fuzzy membership
+Particle Size is Medium,0.01129488,0.004804994,fuzzy membership
+Drug Encapsulation Efficiency is Medium,0.009994292,0.0024118668,fuzzy membership
+Drug Loading Capacity is Low,0.009374429,0.0019636115,fuzzy membership
+Drug LogP is Medium,0.009348767,0.0039607007,fuzzy membership
+Drug TPSA is Low,0.009012641,0.004043957,fuzzy membership
+Drug TPSA is Medium,0.007563808,0.0020917268,fuzzy membership
+Solubility Enhancer Concentration is Medium,0.0073089763,0.002654353,fuzzy membership
+Drug LogP is High,0.006447424,0.0065071993,fuzzy membership
+Drug Encapsulation Efficiency is Low,0.0044820393,0.003598311,fuzzy membership
+Formulation Method = O/W,0.0036068198,0.0036323927,method (one-hot)
+Solubility Enhancer Concentration is Low,0.0031693608,0.0012050591,fuzzy membership
+Formulation Method = W/O/W,0.0031644132,0.00084818224,method (one-hot)
+Formulation Method = S/O/W,0.0023489245,0.0018674451,method (one-hot)
+LA/GA is Low,0.0020104928,0.0011798484,fuzzy membership
+Drug Loading Capacity is High,0.0015625309,0.0012879346,fuzzy membership
+Drug LogP is Low,0.0015587141,0.0029604707,fuzzy membership
+LA/GA is Medium,0.0015448176,0.0018894684,fuzzy membership
+Polymer MW is High,0.0014776723,0.0032670975,fuzzy membership
+Particle Size is High,0.00037007418,7.029823e-05,fuzzy membership
+Solubility Enhancer Concentration is High,0.00025633452,0.00042093807,fuzzy membership
+Drug MW is High,0.00019439468,0.00012687901,fuzzy membership
+Initial Drug-to-Polymer Ratio is High,0.0001363776,9.056096e-05,fuzzy membership
+LA/GA is High,6.2660394e-05,0.00012303273,fuzzy membership
+Drug TPSA is High,0.0,0.0,fuzzy membership
+Formulation Method = S/W/O/W,0.0,0.0,method (one-hot)

@@ -1,0 +1,3 @@
+interpreter,n values,delta (fractional release),n within delta of a boundary,share within delta of a boundary,crisp label flip rate,crisp flip rate | near boundary,mean fuzzy membership shift,max fuzzy membership shift,fuzzy shift | near boundary,share with graded (multi-set) description,knot provenance
+"declared (1/3, 2/3)",4909,0.01,196,0.0399,0.0399,1.0,0.0438,0.12,0.0571,0.3687,design
+data-derived tertiles,4909,0.01,236,0.0481,0.0481,1.0,0.0459,0.1144,0.05,0.4661,data

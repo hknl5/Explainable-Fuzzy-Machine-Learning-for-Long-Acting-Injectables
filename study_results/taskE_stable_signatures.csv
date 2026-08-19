@@ -1,0 +1,12 @@
+signature,folds validated,consistent direction,mean valid effect,mean valid coverage,example rule,stable
+"(('Drug MW is Low', 'low'), ('Log1p Time', 'high'))",2,True,0.3211105159262155,0.3917,IF Log1p Time > 2.458 AND Drug MW is not clearly Low,False
+"(('Drug Encapsulation Efficiency is High', 'high'), ('Log1p Time', 'low'))",2,True,-0.45577689729415516,0.1632,IF Drug Encapsulation Efficiency is mostly High AND Log1p Time ≤ 2.078,False
+"(('Log1p Time', 'high'), ('Particle Size is Medium', 'low'))",1,True,0.4610415711695334,0.5139,IF Particle Size is not clearly Medium AND Log1p Time > 2.301,False
+"(('Drug MW is Medium', 'low'), ('Log1p Time', 'low'))",1,True,-0.4215931258132223,0.4327,IF Drug MW is not clearly Medium AND Log1p Time ≤ 2.28,False
+"(('Drug TPSA is Medium', 'low'), ('Log1p Time', 'low'))",1,True,-0.37284481740575437,0.3464,IF Log1p Time ≤ 1.828 AND Drug TPSA is not clearly Medium,False
+"(('Drug Encapsulation Efficiency is High', 'low'), ('Log1p Time', 'high'), ('Particle Size is Medium', 'low'))",1,True,0.23688396629728647,0.2127,IF Particle Size is not clearly Medium AND Drug Encapsulation Efficiency is not High AND Log1p Time > 1.381,False
+"(('Drug MW is Low', 'low'), ('Log1p Time', 'high'), ('Log1p Time', 'low'), ('Particle Size is Medium', 'high'), ('Polymer MW is Medium', 'high'))",1,True,-0.18512571272713502,0.1901,IF Drug MW is not clearly Low AND Polymer MW has some Medium AND Particle Size has some Medium AND Log1p Time ≤ 2.77 AND Log1p Time > 0.806,False
+"(('Drug MW is Medium', 'low'), ('Log1p Time', 'high'), ('Log1p Time', 'low'))",1,True,-0.3908379597835383,0.186,IF Log1p Time ≤ 1.467 AND Log1p Time > 0.09325 AND Drug MW is not clearly Medium,False
+"(('Drug Encapsulation Efficiency is High', 'low'), ('Log1p Time', 'high'), ('Log1p Time', 'low'))",1,True,0.14940187165180785,0.1285,IF Log1p Time > 1.467 AND Log1p Time ≤ 2.819 AND Drug Encapsulation Efficiency is not High,False
+"(('Drug MW is Medium', 'low'), ('Log1p Time', 'high'), ('Polymer MW is Medium', 'low'))",1,True,0.3402030157981297,0.1167,IF Drug MW is not Medium AND Polymer MW is not clearly Medium AND Log1p Time > 2.292,False
+"(('Drug Encapsulation Efficiency is High', 'high'), ('Log1p Time', 'high'), ('Log1p Time', 'low'))",1,True,-0.26765421726964084,0.0957,IF Log1p Time > 1.463 AND Log1p Time ≤ 2.458 AND Drug Encapsulation Efficiency is mostly High,False
