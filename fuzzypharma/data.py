@@ -238,7 +238,7 @@ def deduplicate_profile_points(
 
 
 def audit(df: pd.DataFrame, points: pd.DataFrame) -> QualityReport:
-    """Compute the data-quality flags described in ``PREPROCESSING.md``."""
+    """Compute the data-quality flags described in ``archive/PREPROCESSING.md``."""
     lo, hi = RELEASE_BOUNDS
     by_id = df.groupby(ID_COL)
 

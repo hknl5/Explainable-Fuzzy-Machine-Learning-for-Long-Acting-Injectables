@@ -70,7 +70,7 @@ FORMULATION_METHODS = ["O/W", "S/O/W", "W/O/W", "S/W/O/W"]
 #: The benchmark (Robles & Samad, 2026) additionally one-hot encodes a
 #: ``Formulation Method`` column that this processed workbook does not contain.
 #: Results are therefore not a like-for-like reproduction of the published
-#: numbers; see ``PREPROCESSING.md``.
+#: numbers; see ``archive/PREPROCESSING.md``.
 STATIC_FEATURES = [
     "Drug MW",
     "Drug TPSA",

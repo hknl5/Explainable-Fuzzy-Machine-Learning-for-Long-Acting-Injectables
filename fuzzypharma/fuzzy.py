@@ -60,7 +60,7 @@ def _quantile_levels(n_sets: int) -> np.ndarray:
     """Quantile levels for the set centers.
 
     For ``n_sets=3`` this is (0.25, 0.50, 0.75), matching the exploratory
-    preview in ``starting.ipynb``.
+    preview in ``archive/starting.ipynb``.
     """
     return np.linspace(0.25, 0.75, n_sets)
 
