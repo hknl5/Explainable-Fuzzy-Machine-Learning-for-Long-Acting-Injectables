@@ -1,0 +1,8 @@
+FORMULATION CLAIMS RE-TESTED INSIDE INDEPENDENTLY DEFINED RELEASE PHASES
+                                             claim                       phase  folds_evaluated  folds_positive  mean_effect  folds_CI_excl_0
+0  Particle Size Low (<= 9.5050) -> higher release        Early (<=1 d, burst)              3.0             3.0       0.0982              1.0
+1  Particle Size Low (<= 9.5050) -> higher release  Middle (1-14 d, diffusion)              3.0             3.0       0.1825              1.0
+2  Particle Size Low (<= 9.5050) -> higher release       Late (>14 d, erosion)              3.0             1.0      -0.0285              0.0
+3    Polymer MW Low (<= 21.0000) -> higher release        Early (<=1 d, burst)              5.0             4.0       0.0727              1.0
+4    Polymer MW Low (<= 21.0000) -> higher release  Middle (1-14 d, diffusion)              5.0             5.0       0.1814              2.0
+5    Polymer MW Low (<= 21.0000) -> higher release       Late (>14 d, erosion)              5.0             4.0       0.0283              0.0

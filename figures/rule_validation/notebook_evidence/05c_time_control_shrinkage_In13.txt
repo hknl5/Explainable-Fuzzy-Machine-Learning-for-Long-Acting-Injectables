@@ -1,0 +1,18 @@
+Mean |effect| across folds — how much of each rule's apparent effect was time:
+       naive  timectl shrinkage  has_formulation_condition
+rule                                                      
+R1    0.5620   0.0729     87.0%                      False
+R2    0.3755   0.0602     84.0%                      False
+R3    0.1193   0.1881    -57.7%                       True
+R4    0.3391   0.1881     44.5%                       True
+R5    0.1451   0.2149    -48.1%                       True
+R6    0.1351   0.2149    -59.1%                       True
+R7    0.1572   0.0738     53.1%                      False
+R8    0.3401   0.0999     70.6%                      False
+Read the two blocks differently:
+  Pure-Time rules (R1,R2,R7,R8): shrinkage is large and POSITIVE (53-87%). Their apparent
+    effect was time. This is the expected signature of a rule with no formulation content.
+  Formulation rules (R3-R6): shrinkage is NEGATIVE - the effect gets LARGER under control.
+    This is not a failure. The naive contrast compares a rule against all other time
+    windows, where the time trend runs opposite to the formulation effect and masks it;
+    the sibling contrast removes that masking and exposes the formulation difference.

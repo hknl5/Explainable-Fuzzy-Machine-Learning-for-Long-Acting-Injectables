@@ -1,0 +1,9 @@
+Correlation with Release:
+  Time            |r| = 0.6777
+  Particle Size   |r| = 0.0392
+  Polymer MW      |r| = 0.0347
+  LA/GA           |r| = 0.0535
+
+Time's association is 17.3x the strongest rule feature.
+An uncontrolled 'effect' for any Time-conditioned rule is therefore expected a priori,
+and carries no formulation information.

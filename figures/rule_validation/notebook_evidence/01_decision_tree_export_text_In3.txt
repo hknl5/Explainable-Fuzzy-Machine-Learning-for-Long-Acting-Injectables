@@ -1,0 +1,28 @@
+|--- Time <= 3.3365
+|   |--- Time <= 0.1071
+|   |   |--- Time <= 0.0022
+|   |   |   |--- value: [0.0001]
+|   |   |--- Time >  0.0022
+|   |   |   |--- value: [0.1410]
+|   |--- Time >  0.1071
+|   |   |--- Particle Size <= 9.5050
+|   |   |   |--- value: [0.4383]
+|   |   |--- Particle Size >  9.5050
+|   |   |   |--- value: [0.2597]
+|--- Time >  3.3365
+|   |--- Time <= 10.8857
+|   |   |--- Polymer MW <= 21.0000
+|   |   |   |--- value: [0.6598]
+|   |   |--- Polymer MW >  21.0000
+|   |   |   |--- value: [0.4549]
+|   |--- Time >  10.8857
+|   |   |--- Time <= 17.8903
+|   |   |   |--- value: [0.6629]
+|   |   |--- Time >  17.8903
+|   |   |   |--- value: [0.7749]
+
+leaves: 8
+thresholds: [0.0022, 0.1071, 3.3365, 9.505, 10.8857, 17.8903, 21.0]
+
+EXACT REPRODUCTION CONFIRMED — thresholds match the archived rule set,
+and are identical with or without the Release clip.
