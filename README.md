@@ -1,5 +1,5 @@
 # Explainable Fuzzy Machine Learning for Long-Acting Injectables
-
+**Read the Full Report:** [Download Report PDF](./Interpretable_ML_PLGA_Release_Report.pdf)
 > **Project status: Under construction.** This repository contains preliminary research materials, exploratory analysis, and an initial fuzzification demonstration. The methodology and modeling pipeline are still being developed and may change.
 
 This research project explores whether fuzzy feature representations can improve the prediction and interpretation of drug-release behavior from polymer-based long-acting injectable formulations. It focuses on drug-loaded PLGA microparticles and builds on an explainable machine-learning benchmark for early release, release-profile classification, and complete release-curve prediction.
