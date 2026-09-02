@@ -1,0 +1,11 @@
+THE EIGHT PREDEFINED RULES (verbatim — not modified anywhere in this notebook)
+================================================================================================
+  R1:  IF Time <= 0.0022                                            THEN Release = 0.0001
+  R2:  IF 0.0022 < Time <= 0.1071                                   THEN Release = 0.1410
+  R3:  IF 0.1071 < Time <= 3.3365  AND Particle Size <= 9.5050      THEN Release = 0.4383
+  R4:  IF 0.1071 < Time <= 3.3365  AND Particle Size >  9.5050      THEN Release = 0.2597
+  R5:  IF 3.3365 < Time <= 10.8857 AND Polymer MW <= 21.0000        THEN Release = 0.6598
+  R6:  IF 3.3365 < Time <= 10.8857 AND Polymer MW >  21.0000        THEN Release = 0.4549
+  R7:  IF 10.8857 < Time <= 17.8903                                 THEN Release = 0.6629
+  R8:  IF Time > 17.8903                                            THEN Release = 0.7749
+================================================================================================
